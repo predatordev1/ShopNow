@@ -1,0 +1,5 @@
+ecr_repo: 
+
+frontend:
+  replicacount: 2
+  image:
