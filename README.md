@@ -342,7 +342,6 @@ kubectl logs backend-746cc99cd-cqrgf -n shopnow-demo --previous # If no details 
 ## Additional Notes
 
 **Check the Application Architecture details**: [Docs/APPLICATION-ARCHITECTURE.md](Docs/APPLICATION-ARCHITECTURE.md)
-**Check the Troubleshooting Guide**: [Docs/TROUBLESHOOTING.md](Docs/TROUBLESHOOTING.md)
 ---
 
 
