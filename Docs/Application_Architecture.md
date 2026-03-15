@@ -14,4 +14,4 @@ All backend services share common database models and utilities through `backend
 Created the main repository into GitHub account to Maintain version by syncing/pushing updates from the main repository as needed.
 
 <h2>Task 2: MERN Application Containerize the Application by Creating Dockerfiles for each component (Admin,Frontend and Backend)</h2>
-
+![alt text](image.png "Project Structure")
