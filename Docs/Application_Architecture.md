@@ -34,6 +34,7 @@ aws ecr create-repository --repository-name dev-shopnow-mongo --region us-east-2
 aws ecr describe-repositories --region us-east-2
 
 ```
+![alt text](image-6.png)
 
 <h2>Task 3: Creation of pipeline and if success push those images to ECR repos.</h2>
 Jenkins file created for complete flow from builing of Images to Pushing docker images to ECR Server with Post Actions.
@@ -47,7 +48,14 @@ Jenkins file created for complete flow from builing of Images to Pushing docker 
 ```
 
 <h3> Docker images pushed to Respective ECR Repos.</h3>
+
+![alt text](image-7.png)
+![alt text](image-8.png)
+![alt text](image-9.png)
+
 Pipeline auto started once i made any push.
+
+![alt text](image-10.png)
 
 <h2>Task 4: Creation of minikube Cluster and deployment app using HELM Package.</h2>
 Installation of Helm and adding the Helm repo.

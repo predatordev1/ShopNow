@@ -24,14 +24,9 @@ jenkins/
 **Trigger**: Git push to main branch
 **Outputs**: Container images pushed to registry
 
-### CD Pipelines (Continuous Deployment)
-**Purpose**: Deploy applications to Kubernetes
-**Trigger**: Manual or automated after CI success
-**Outputs**: Running applications in Kubernetes
-
 ## 🚀 Pipeline Workflow
 
-### CI Pipeline Flow
+### CI/CD Pipeline Flow
 ```
 1. Checkout Code
 2. Set Image Tag (git commit hash)
@@ -41,11 +36,3 @@ jenkins/
 6. Archive Build Artifacts
 ```
 
-### CD Pipeline Flow
-```
-1. Checkout Code
-2. Get Image Tag (from CI pipeline)
-3. Deploy with Helm
-4. Verify Deployment
-5. Run Health Checks
-```
