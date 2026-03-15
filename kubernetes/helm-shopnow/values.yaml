@@ -5,18 +5,18 @@ ecr_repo_backend: "975050024946.dkr.ecr.us-east-2.amazonaws.com/dev-shopnow-back
 frontend:
   replicacount: 2
   image:
-    tag: frontend-v3
+    tag: frontend-v2
 
 
 backend:
   replicacount: 2
   image:
-    tag: backend-v3
+    tag: backend-v2
 
 admin:
   replicacount: 2
   image:
-    tag: admin-v3
+    tag: admin-v2
 
 databaseReplicaCount: 1
 
