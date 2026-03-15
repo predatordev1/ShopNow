@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deployment
+  namespace: shopnow
+spec:
+  replicas: {{ .Values.admin.replicacount }}
+  selector:
+    matchLabels:
+      component: admin
+  template:
+    metadata:
+      labels:
+        component: admin
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: admin-deployment
+          image: "{{ .Values.ecr_repo_admin }}:{{ .Values.admin.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.configmap.ADMIN_PORT }}
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: shopnow-configmap
+                  key: ADMIN_PORT
+            - name: USER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: shopnow-configmap
+                  key: USER_NAME
+            - name: MONGODB_URI
+              valueFrom:
+                configMapKeyRef:
+                  name: shopnow-configmap
+                  key: MONGODB_URI
+            - name: PUBLIC_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: shopnow-configmap
+                  key: MONGODB_URI
+          resources:
+            requests:
+              cpu: {{ .Values.resources.requests.cpu }}
+              memory: {{ .Values.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.resources.limits.cpu }}
+              memory: {{ .Values.resources.limits.memory }}
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+  namespace: shopnow
+spec:
+  selector:
+    component: admin
+  ports:
+    - port: {{ .Values.configmap.ADMIN_PORT }}
+      targetPort: {{ .Values.configmap.ADMIN_PORT }}
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: admin-nginx-config
+  namespace: shopnow
+data:
+  default.conf: |
+    server {
+        listen 80;
+        server_name _;
+        root /usr/share/nginx/html;
+        index index.html;
+        
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+    }

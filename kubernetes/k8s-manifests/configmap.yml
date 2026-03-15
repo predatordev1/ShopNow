@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shopnow-configmap 
+  namespace: shopnow
+data:
+  ADMIN_PORT: 80
+  BACKEND_PORT: 5000
+  USER_NAME: "Devendra"
+  MONGODB_URI: "mongodb://mongo:27017/${MONGO_DB:-shopnow}"
+  PUBLIC_URL: "/"
+  REACT_APP_API_BASE_URL: "/api"
