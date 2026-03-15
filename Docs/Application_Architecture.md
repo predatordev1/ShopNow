@@ -15,6 +15,9 @@ Created the main repository into GitHub account to Maintain version by syncing/p
 
 <h2>Task 2: MERN Application Containerize the Application by Creating Dockerfiles for each component (Admin,Frontend and Backend)</h2>
 <h3>Docker files are created for Frontend along with Docker-Compose file.</h3>
+
+![alt text](image-1.png)
+
 <h3> Creation of ECR Repos based on front-end and backend.
 ECR Repo for frontend and backend created.
 
@@ -57,6 +60,9 @@ helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx -n ingress-ngin
 ```
 
 Create all files like deployment ,Service, Ingress, ConfigMap, Namespace ,Database Volume and dB PVC.
+
+![alt text](image-4.png)
+
 Make sure don't include secrets in git hub so create secreats in Kubernets cluster only like AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY and JWT_SECRET using
 
 ```bash
@@ -94,10 +100,11 @@ At this point complete app is fully deployed and running without any issue.
 1. **Access the Website**
    Open your preferred web browser and navigate to the application's URL. If you are running locally, go to:
    [text](http://10.242.188.178:3000/)
-
+![alt text](image-2.png)
 ---
 ## Step 2: Access Administrator Dashboard
 [text](http://10.242.188.178)
+![alt text](image-3.png)
 
 ```bash
 kubectl exec -it <mongodb-pod-name> -n shopnow -- mongosh shopnow
@@ -120,14 +127,13 @@ docker exec -it shopnow-mongo-1 mongosh --eval '
 ```
 You should see an output confirming the matchedCount: (OK 1).
 Exit the Database Type exit and press enter to return to your normal computer terminal.
-
+![alt text](image-5.png)
 ---
 *Happy Shoping!*
 
 
 
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
-![alt text](image-4.png)
-![alt text](image-5.png)
+
+
+
+
